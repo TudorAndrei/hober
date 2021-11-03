@@ -16,7 +16,7 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.RAMDirectory;
+import org.apache.lucene.store.ByteBuffersDirectory;
 
 public class HelloLucene {
     public static void main(String[] args) throws IOException, ParseException {
@@ -25,7 +25,7 @@ public class HelloLucene {
         StandardAnalyzer analyzer = new StandardAnalyzer();
 
         // 1. create the index
-        Directory index = new RAMDirectory();
+        Directory index = new ByteBuffersDirectory();
 
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
 
@@ -37,11 +37,11 @@ public class HelloLucene {
         w.close();
 
         // 2. query
-        String querystr = args.length > 0 ? args[0] : "lucene";
+        String querystring = args.length > 0 ? args[0] : "lucene";
 
         // the "title" arg specifies the default field to use
         // when no field is explicitly specified in the query.
-        Query q = new QueryParser("title", analyzer).parse(querystr);
+        Query q = new QueryParser("title", analyzer).parse(querystring);
 
         // 3. search
         int hitsPerPage = 10;
