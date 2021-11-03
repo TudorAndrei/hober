@@ -4,11 +4,6 @@ plugins {
     id 'application'
 }
 
-// Apply the java plugin to add support for Java
-//apply plugin: 'java'
-
-// Apply the application plugin to add support for building an application
-//apply plugin: 'application'
 group 'org.tudorandrei'
 version '1.0-SNAPSHOT'
 
@@ -29,12 +24,20 @@ dependencies {
 
 }
 
-//test {
-//    useJUnitPlatform()
+//java {
+//    withSourcesJar()
+//}
+//
+//jar {
+//    manifest {
+//        attributes(
+//
+//                'Main-Class': 'HelloLucene'
+//        )
+//    }
 //}
 
-jar {
-    manifest {
-        attributes 'Main-Class': 'src.main.java.HelloLucene'
-    }
+
+application {
+    mainClass = 'HelloLucene'
 }
