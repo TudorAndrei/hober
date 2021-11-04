@@ -15,13 +15,17 @@ dependencies {
     implementation 'org.codehaus.groovy:groovy-all:3.0.8'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    // Lucene
     implementation 'org.apache.lucene:lucene-queries:8.10.1'
     implementation 'org.apache.lucene:lucene-analyzers-common:8.10.1'
     implementation 'org.apache.lucene:lucene-core:8.10.1'
     implementation 'org.apache.lucene:lucene-queryparser:8.10.1'
+    // Tika
     implementation 'org.apache.tika:tika-parsers:2.1.0'
     implementation 'org.apache.tika:tika-core:2.1.0'
+    // Loggers
 
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
 }
 
 //java {
@@ -39,5 +43,5 @@ dependencies {
 
 
 application {
-    mainClass = 'HelloLucene'
+    mainClass = 'Typedetection'
 }
