@@ -1,26 +1,17 @@
-//buildscript {
-//    repositories {
-//        mavenCentral()
-//    }
-//    dependencies {
-//        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
-//    }
-//}
 plugins {
-    id 'groovy'
     id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.0-RC2'
     id 'application'
-    id "com.github.johnrengelman.shadow" version "7.1.0"
+
 }
 group 'org.tudorandrei'
-version '1.0'
+version '1.0_kotlin'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.codehaus.groovy:groovy-all:3.0.8'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     // Lucene
@@ -34,8 +25,34 @@ dependencies {
     // Loggers
 
     implementation 'org.slf4j:slf4j-simple:1.7.32'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31'
+
 
 }
+
+application {
+    mainClass = 'HelloLucene'
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
+
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
+
 
 application {
     mainClass = 'HelloLucene'
