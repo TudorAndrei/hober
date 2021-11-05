@@ -1,21 +1,21 @@
-import java.io.File;
-import java.io.IOException;
+import kotlin.Throws
+import java.io.IOException
+import org.apache.tika.exception.TikaException
+import kotlin.jvm.JvmStatic
+import org.apache.tika.Tika
+import java.io.File
 
-import org.apache.tika.Tika;
-import org.apache.tika.exception.TikaException;
-
-import org.xml.sax.SAXException;
-
-public class TikaExtraction {
-
-    public static void main(final String[] args) throws IOException, TikaException {
+object TikaExtraction {
+    @Throws(IOException::class, TikaException::class)
+    @JvmStatic
+    fun main(args: Array<String>) {
 
         //Assume sample.txt is in your current directory
-        File file = new File("./documents/sample.txt");
+        val file = File("./documents/sample.txt")
 
         //Instantiating Tika facade class
-        Tika tika = new Tika();
-        String filecontent = tika.parseToString(file);
-        System.out.println("Extracted Content: " + filecontent);
+        val tika = Tika()
+        val filecontent = tika.parseToString(file)
+        println("Extracted Content: $filecontent")
     }
 }
