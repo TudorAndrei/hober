@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.6.0-RC2'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
+
 
 }
 group 'org.tudorandrei'
@@ -12,6 +14,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     // Lucene
@@ -22,12 +25,12 @@ dependencies {
     // Tika
     implementation 'org.apache.tika:tika-parsers:2.1.0'
     implementation 'org.apache.tika:tika-core:2.1.0'
+    implementation 'org.apache.tika:tika-parser-text-module:2.1.0'
+    implementation 'org.apache.tika:tika-parser-pdf-module:2.1.0'
+    implementation 'org.apache.tika:tika-parser-microsoft-module:2.1.0'
+    implementation 'org.apache.tika:tika-parser-xml-module:2.1.0'
     // Loggers
-
     implementation 'org.slf4j:slf4j-simple:1.7.32'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31'
-
-
 }
 
 application {
@@ -44,8 +47,6 @@ compileTestKotlin {
     }
 }
 
-
-
 tasks.named('jar') {
     manifest {
         attributes('Implementation-Title': project.name,
@@ -53,7 +54,9 @@ tasks.named('jar') {
     }
 }
 
-
 application {
     mainClass = 'HelloLucene'
+}
+shadowJar {
+    minimize()
 }
