@@ -1,15 +1,6 @@
-import kotlin.jvm.JvmStatic
 import org.apache.tika.Tika
-import java.io.File
+import ListOfFiles
 
-internal class ListOfFiles {
-    fun get_docs(): Array<String> {
-        //Creating a File object for directory
-        val directoryPath = File("./documents")
-        //List of all files and directories
-        return directoryPath.list()
-    }
-}
 
 object Typedetection {
     @JvmStatic
@@ -18,7 +9,7 @@ object Typedetection {
         //assume example.mp3 is in your current directory
 //        File file = new File("./documents/descarca-camil-petrescu-ultima-noapte-de-d - Unknown.docx");//
         val files = ListOfFiles()
-        val file_paths: Array<String> = files.get_docs()
+        val file_paths: Array<String> = files.getDocs()
         //Instantiating tika facade class
         val tika = Tika()
 
