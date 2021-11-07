@@ -31,6 +31,11 @@ dependencies {
     // Tika
     implementation 'org.apache.tika:tika-parsers:2.1.0'
     implementation 'org.apache.tika:tika-core:2.1.0'
+    implementation 'org.apache.tika:tika:2.1.0'
+    implementation 'org.apache.tika:tika-parser-pdf-module:2.1.0'
+    implementation 'org.apache.tika:tika-parser-microsoft-module:2.1.0'
+
+
     // Loggers
 
     implementation 'org.slf4j:slf4j-simple:1.7.32'
