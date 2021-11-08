@@ -1,11 +1,9 @@
-import org.apache.tika.Tika
 import org.apache.tika.exception.TikaException
 import org.apache.tika.io.TikaInputStream
 import org.apache.tika.metadata.Metadata
 import org.apache.tika.parser.AutoDetectParser
 import org.apache.tika.sax.BodyContentHandler
 import java.io.File
-import java.io.FileInputStream
 import java.io.IOException
 
 object TikaExtraction {
