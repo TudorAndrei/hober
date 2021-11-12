@@ -1,8 +1,9 @@
+//file:noinspection GroovyAssignabilityCheck
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.6.0-RC2'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '7.1.0'
+//    id 'com.github.johnrengelman.shadow' version '7.1.0'
 
 
 }
@@ -14,12 +15,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31'
+//    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31'
+//    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.5.31'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     // Lucene
     implementation 'org.apache.lucene:lucene-queries:8.10.1'
     implementation 'org.apache.lucene:lucene-analyzers-common:8.10.1'
+    implementation 'org.apache.lucene:lucene-analyzers:3.6.2'
     implementation 'org.apache.lucene:lucene-core:8.10.1'
     implementation 'org.apache.lucene:lucene-queryparser:8.10.1'
     // Tika
@@ -54,9 +57,18 @@ tasks.named('jar') {
     }
 }
 
-application {
-    mainClass = 'HelloLucene'
+//application {
+//    mainClass = 'Indexer'
+//}
+//shadowJar {
+//    minimize()
+//}
+
+task(search, dependsOn: 'classes', type: JavaExec) {
+    mainClass = 'Searcher'
+    classpath = sourceSets.main.runtimeClasspath
 }
-shadowJar {
-    minimize()
+task(index, dependsOn: 'classes', type: JavaExec) {
+    mainClass = 'Indexer'
+    classpath = sourceSets.main.runtimeClasspath
 }
