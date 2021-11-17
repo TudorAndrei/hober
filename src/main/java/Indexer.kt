@@ -9,7 +9,6 @@ import org.apache.lucene.index.IndexWriter
 import org.apache.lucene.index.IndexWriterConfig
 import org.apache.lucene.store.Directory
 import org.apache.lucene.store.FSDirectory
-import org.apache.tika.exception.TikaException
 import org.apache.tika.metadata.Metadata
 import org.apache.tika.parser.AutoDetectParser
 import org.apache.tika.sax.BodyContentHandler
@@ -44,7 +43,7 @@ object Indexer {
         }
     }
 
-    fun createIndex() {
+    private fun createIndex() {
         createDir(documentsPath)
         createDir(indexPath)
         try {
@@ -61,11 +60,7 @@ object Indexer {
         }
     }
 
-    @Throws(IOException::class)
     private fun indexDocuments(writer: IndexWriter) {
-        //Instantiating tika facade class
-//        val tika = Tika()
-        //detecting the file type using detect method
         if (file_paths != null) {
             for (file_path in file_paths) {
                 val stream = FileInputStream(file_path)
@@ -91,7 +86,6 @@ object Indexer {
         }
     }
 
-    @Throws(IOException::class, TikaException::class)
     @JvmStatic
     fun main(args: Array<String>) {
         createIndex()

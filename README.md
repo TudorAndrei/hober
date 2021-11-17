@@ -2,6 +2,14 @@
 
 ![](misc/logo.png)
 
+## Documents
+
+The documents must be placed in the `./documents` folder.
+
+## Query
+
+The queries must be placed in the `query/queries.txt` file. Each search on a new line
+
 ## Build project
 
 ```
@@ -20,16 +28,3 @@
 ./gradlew search 
 ```
 
-By default the searcher lists the top 5 elements to change that run:
-
-```
-./gradlew search  --args="1"
-```
-
-## Documents
-
-The documents must be placed in the `./documents` folder.
-
-## Query
-
-The queryies must be placed in the `query/queries.txt` file. Each word on a separate line.
