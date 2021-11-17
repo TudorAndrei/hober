@@ -70,7 +70,6 @@ object Searcher {
             hits = args[0].toInt()
         } catch (e: IndexOutOfBoundsException) {
         }
-        println(hits)
         val queries: ArrayList<String> = readQueries()
         for (q in queries) {
             print("For Query $q: ")
